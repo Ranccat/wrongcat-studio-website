@@ -24,19 +24,29 @@ public class UserController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        try
+        var result = await _userService.RegisterAsync(registerDto);
+        if (result.IsSuccess == false)
         {
-            var result = await _userService.RegisterAsync(registerDto);
-            if (result.IsSuccess == false)
-            {
-                return Conflict(new { message = result.ErrorMessage });
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Error :: " + e);
+            return Conflict(new { message = result.ErrorMessage });
         }
         
         return Ok(new { mesage = "Registration successful" });
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+    {
+        if (ModelState.IsValid == false)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var result = await _userService.LoginAsync(loginDto);
+        if (result.IsSuccess == false)
+        {
+            return Conflict(new { message = result.ErrorMessage });
+        }
+
+        return Ok(new { message = "Login successful" });
     }
 }

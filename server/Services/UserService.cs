@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 public class UserService
@@ -45,6 +46,26 @@ public class UserService
         user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
         await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
+
+        return (true, string.Empty);
+    }
+
+    public async Task<(bool IsSuccess, string ErrorMessage)> LoginAsync(LoginDto loginDto)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == loginDto.UserId);
+        if (user == null)
+        {
+            return (false, "The user ID doesn't exist");
+        }
+
+        bool passwordVerified = BCrypt.Net.BCrypt.Verify(loginDto.Password, user.Password);
+        if (passwordVerified == false)
+        {
+            return (false, "Incorrect password");
+        }
+
+        user.LastLogin = DateTime.UtcNow;
         await _context.SaveChangesAsync();
 
         return (true, string.Empty);
