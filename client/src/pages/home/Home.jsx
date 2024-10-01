@@ -13,10 +13,16 @@ const HomeDiv = styled.div`
 `;
 
 const TitleDiv = styled.div`
+    width : 35vw;
     margin-top: 30vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* 왼쪽 정렬 */
+
+    &:hover p {
+    transform: scale(1.1); /* 10% 확대 */
+    transition: transform 0.5s ease-in-out; /* 확대 속도 조정 */
+    }
 `;
 
 const TitleP = styled.p`
@@ -24,7 +30,6 @@ const TitleP = styled.p`
     font-weight : 800;
     margin : 0 0 0 5vw;
     color : white;
-    background-color: rgba(0, 0, 0, 0.04); /* 검정색을 50% 투명하게 설정 */
     border-radius : 100px;
 `
 
@@ -33,7 +38,6 @@ const ExplainP = styled.p`
     font-weight : 200;
     margin : 0 0 0 5vw;
     color : white;
-    background-color: rgba(0, 0, 0, 0.04); /* 검정색을 50% 투명하게 설정 */
     border-radius : 100px;
 `
 
