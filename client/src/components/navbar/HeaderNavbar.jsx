@@ -29,13 +29,21 @@ const UserDiv = styled.div`
 
 const PageP = styled.p`
     margin-right : 10vw;
-    background-color: rgba(0, 0, 0, 0.02); /* 검정색을 50% 투명하게 설정 */
     border-radius : 100px;
+    text-shadow: 1px 1px 1px rgba(133, 166, 242, 0.4);
+    &:hover {
+        transform: scale(1.2); /* 10% 확대 */
+        transition: transform 0.4s ease-in-out; /* 확대 속도 조정 */
+    }
 `
 
 const UserP = styled.p`
-    background-color: rgba(0, 0, 0, 0.02); /* 검정색을 50% 투명하게 설정 */
     border-radius : 100px;
+    text-shadow: 1px 1px 1px rgba(133, 166, 242, 0.4);
+    &:hover {
+        transform: scale(1.2); /* 10% 확대 */
+        transition: transform 0.4s ease-in-out; /* 확대 속도 조정 */
+    }
 `
 
 const StyledLink = styled(Link)`
