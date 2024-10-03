@@ -3,10 +3,12 @@ using System.ComponentModel.DataAnnotations;
 public class LoginDto
 {
     [Required]
-    [StringLength(30)]
+    [MinLength(8)]
+    [MaxLength(24)]
     public required string UserId { get; set; }
 
     [Required]
-    [MinLength(4)]
+    [MinLength(8)]
+    [MaxLength(24)]
     public required string Password { get; set; }
 }

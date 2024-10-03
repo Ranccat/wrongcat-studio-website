@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations;
 public class RegisterDto
 {
     [Required]
-    [StringLength(30)]
+    [MinLength(8)]
+    [MaxLength(24)]
     public required string UserId { get; set; }
 
     [Required]
@@ -11,10 +12,12 @@ public class RegisterDto
     public required string Email { get; set; }
 
     [Required]
-    [MinLength(4)]
+    [MinLength(8)]
+    [MaxLength(24)]
     public required string Password { get; set; }
 
     [Required]
-    [MinLength(6)]
+    [MinLength(2)]
+    [MaxLength(16)]
     public required string Nickname { get; set; }
 }
