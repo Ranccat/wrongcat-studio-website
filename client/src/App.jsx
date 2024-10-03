@@ -11,6 +11,17 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
+    @font-face {
+      font-family: 'Maplestory Bold';
+      src: url('/fonts/Maplestory Bold.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Maplestory Light';
+      src: url('/fonts/Maplestory Light.ttf') format('truetype');
+    }
+
+
   button, input {
     font-family: 'Pretendard';
     src: url('/fonts/PretendardVariable.woff2') format('woff2');
